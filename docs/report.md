@@ -1,4 +1,4 @@
-# Parameter Golf TextVQA Report Draft
+# Parameter Golf TextVQA Report
 
 ## 0. Task & Protocol
 

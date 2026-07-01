@@ -11,7 +11,7 @@ Final method:
 - Submitted adapter: `weights/final_r64_svd_r16_seed3`
 - Local TextVQA validation exact match: `0.74414` for the submitted seed-3 adapter
 
-No full Qwen model weights are included. The zip only includes source code, evaluation code, lightweight PEFT weights, local result files, and documentation.
+No full Qwen model weights are included. The repository only includes source code, evaluation code, lightweight PEFT weights, local result files, and documentation.
 
 ## Directory Layout
 
@@ -35,10 +35,9 @@ Example setup:
 micromamba create -p ./env python=3.13 -y
 micromamba activate ./env
 pip install -r requirements.txt
-pip install -e ./lmms-eval
 ```
 
-If installing PyTorch from pip, use the CUDA wheel index that matches the target server.
+`requirements.txt` includes the PyTorch CUDA 12.4 wheel index and installs the bundled `lmms-eval/` package in editable mode.
 
 ## Required Paths
 
@@ -49,6 +48,7 @@ export BASE_MODEL=/path/to/Qwen3-VL-2B-Instruct
 export TEXTVQA_DATA_PATH='/path/to/textvqa/train-*.parquet'
 export TEXTVQA_VAL_DATA_PATH='/path/to/textvqa/validation-*.parquet'
 export HF_HOME=/path/to/hf_cache
+export HF_DATASETS_CACHE=/path/to/hf_cache/datasets
 export CUDA_VISIBLE_DEVICES=0
 ```
 

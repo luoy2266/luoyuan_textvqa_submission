@@ -8,10 +8,14 @@ def main():
     parser.add_argument("--data-path", required=True)
     parser.add_argument("--strategy", default="question_aware")
     parser.add_argument("--max-tokens", type=int, default=16)
+    parser.add_argument("--output", default=None)
     args = parser.parse_args()
 
-    task_dir = Path(__file__).resolve().parents[1] / "lmms-eval" / "lmms_eval" / "tasks" / "textvqa"
-    output = task_dir / "textvqa_val_ocr_qaware16_local.yaml"
+    if args.output:
+        output = Path(args.output)
+    else:
+        task_dir = Path(__file__).resolve().parents[1] / "lmms-eval" / "lmms_eval" / "tasks" / "textvqa"
+        output = task_dir / "textvqa_val_ocr_qaware16_local.yaml"
     text = f"""task: textvqa_val_ocr_qaware16_local
 test_split: validation
 dataset_path: parquet
@@ -43,6 +47,7 @@ lmms_eval_specific_kwargs:
     ocr_max_tokens: {args.max_tokens}
     ocr_strategy: {args.strategy}
 """
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(text, encoding="utf-8")
     print(f"[INFO] Wrote {output}")
 
