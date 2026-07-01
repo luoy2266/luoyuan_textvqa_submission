@@ -24,6 +24,7 @@ ${PYTHON:-python3} -c "import torch; print('CUDA available:', torch.cuda.is_avai
 
 ${PYTHON:-python3} -m lmms_eval \
     --model qwen3_vl \
+    --force_simple \
     --model_args pretrained=${MODEL_PATH},attn_implementation=eager,device=cuda,max_pixels=${MAX_PIXELS},min_pixels=${MIN_PIXELS},use_cache=${USE_CACHE},device_map=cuda \
     --tasks "${TASK}" \
     --batch_size 1 \
