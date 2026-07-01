@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import shutil
 from pathlib import Path
 
 
@@ -49,6 +50,9 @@ lmms_eval_specific_kwargs:
 """
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(text, encoding="utf-8")
+    source_utils = Path(__file__).resolve().parents[1] / "lmms-eval" / "lmms_eval" / "tasks" / "textvqa" / "utils.py"
+    if output.parent != source_utils.parent:
+        shutil.copy2(source_utils, output.parent / "utils.py")
     print(f"[INFO] Wrote {output}")
 
 
