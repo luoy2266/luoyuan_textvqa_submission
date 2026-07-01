@@ -1,0 +1,11 @@
+method,seed,task,exact_match,train_wall_time,eval_wall_time,adapter_size,notes
+baseline_lora_r16_no_ocr,1,textvqa_val,0.71340,,,82M,original repository baseline reproduced locally
+baseline_lora_r16_no_ocr,2,textvqa_val,0.71426,,,,
+baseline_lora_r16_no_ocr,3,textvqa_val,0.71000,,,,
+ocr_qaware16_lora_r16,1,textvqa_val_ocr_qaware16,0.73248,,,82M,question-aware OCR top-16
+r64_teacher,1,textvqa_val_ocr_qaware16,0.74074,58:37.90,,~349M,full LM rsLoRA r64 alpha24
+r64_teacher,2,textvqa_val_ocr_qaware16,0.73990,58:47.74,,~349M,full LM rsLoRA r64 alpha24
+r64_teacher,3,textvqa_val_ocr_qaware16,0.74570,58:00.76,,~349M,full LM rsLoRA r64 alpha24
+r64_svd_r16,1,textvqa_val_ocr_qaware16,0.73970,,21:21.81,82M,SVD-compressed from r64 teacher
+r64_svd_r16,2,textvqa_val_ocr_qaware16,0.74114,,21:26.89,82M,SVD-compressed from r64 teacher
+r64_svd_r16_submitted,3,textvqa_val_ocr_qaware16,0.74414,,~21m,82M,submitted local-best adapter

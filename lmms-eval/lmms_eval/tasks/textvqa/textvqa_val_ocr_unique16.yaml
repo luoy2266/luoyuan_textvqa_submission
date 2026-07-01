@@ -1,0 +1,30 @@
+task: textvqa_val_ocr_unique16
+test_split: validation
+dataset_path: parquet
+dataset_kwargs:
+  data_files:
+    validation: ../../datasets/textvqa_hf/data/validation-*.parquet
+output_type: generate_until
+doc_to_visual: !function utils.textvqa_doc_to_visual
+doc_to_text: !function utils.textvqa_doc_to_text
+doc_to_target: "answer"
+generation_kwargs:
+  until:
+    - "ASSISTANT:"
+process_results: !function utils.textvqa_process_results
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+  - metric: submission
+    aggregation: !function utils.textvqa_aggregate_submissions
+    higher_is_better: true
+lmms_eval_specific_kwargs:
+  default:
+    pre_prompt: ""
+    post_prompt: "\nAnswer the question using a single word or phrase."
+    ocr: true
+    ocr_max_tokens: 16
+    ocr_strategy: unique

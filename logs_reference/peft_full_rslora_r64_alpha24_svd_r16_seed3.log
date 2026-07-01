@@ -1,0 +1,56 @@
+[2026-07-01 10:44:55 CST] Starting peft_full_rslora_r64_alpha24_svd_r16 seed 3
+[2026-07-01 10:44:55 CST] Input adapter: ./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_seed3/final
+[2026-07-01 10:44:55 CST] Output dir: ./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3
+[2026-07-01 10:44:55 CST] Result dir: ./results/textvqa_lora_compression/peft_full_rslora_r64_alpha24_svd_r16_seed3
+[2026-07-01 10:44:55 CST] Rank=16 alpha=16 task=textvqa_val_ocr_qaware16 eval_gpu=0
+Python 3.13.5
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme1n1p1  6.9T  6.2T  347G  95% /data1
+[2026-07-01 10:44:55 CST] START compress: python compress_lora_svd.py --input-adapter ./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_seed3/final --output-adapter ./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3/final --rank 16 --alpha 16 --use-rslora
+{
+  "compressed_pairs": 196,
+  "energy_kept_ratio": 0.7825341873419268,
+  "input_adapter": "outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_seed3/final",
+  "method": "svd_low_rank_product",
+  "new_alpha": 16,
+  "new_rank": 16,
+  "new_scaling": 4.0,
+  "new_use_rslora": true,
+  "old_alpha": 24.0,
+  "old_rank": 64,
+  "old_scaling": 3.0,
+  "old_use_rslora": true,
+  "output_adapter": "outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3/final"
+}
+[2026-07-01 10:44:58 CST] END compress
+[2026-07-01 10:44:58 CST] START merge: env BASE_MODEL=/home/luoy/data1/models/Qwen3-VL-2B-Instruct ADAPTER=./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3/final MERGED_MODEL=./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3/merged MERGE_DTYPE=float16 SEED=3 bash run_merge_lora.sh
+/home/luoy/data1/envs/parameter-golf-py313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/luoy/data1/envs/parameter-golf-py313/lib/python3.13/site-packages/transformers/models/auto/modeling_auto.py:2284: FutureWarning: The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use `AutoModelForImageTextToText` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+[INFO] Merged model saved to ./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3/merged
+[2026-07-01 10:45:11 CST] END merge
+idle
+CUDA available: True
+  GPU 0: NVIDIA GeForce RTX 4090
+/home/luoy/data1/envs/parameter-golf-py313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[2026-07-01 10:46:58 CST] MANUAL eval seed3 SVD r16 start
+CUDA available: True
+  GPU 0: NVIDIA GeForce RTX 4090
+/home/luoy/data1/envs/parameter-golf-py313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-07-01 10:47:04[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m475[0m - [1mVerbosity set to INFO[0m
+Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+[32m2026-07-01 10:47:08[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m594[0m - [1mEvaluation tracker args: {'output_path': './results/textvqa_lora_compression/peft_full_rslora_r64_alpha24_svd_r16_seed3'}[0m
+[32m2026-07-01 10:47:08[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m678[0m - [1mSelected Tasks: ['textvqa_val_ocr_qaware16'][0m
+[32m2026-07-01 10:47:08[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m323[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+[32m2026-07-01 10:47:12[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m865[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-07-01 10:47:12[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m469[0m - [1mBuilding contexts for textvqa_val_ocr_qaware16 on rank 0...[0m
+  0%|          | 0/5000 [00:00<?, ?it/s]  8%|▊         | 384/5000 [00:00<00:01, 3838.19it/s] 16%|█▌        | 803/5000 [00:00<00:01, 4042.36it/s] 24%|██▍       | 1208/5000 [00:00<00:01, 1951.98it/s] 32%|███▏      | 1605/5000 [00:00<00:01, 2434.84it/s] 40%|███▉      | 1982/5000 [00:00<00:01, 2769.52it/s] 47%|████▋     | 2360/5000 [00:00<00:00, 3037.51it/s] 54%|█████▍    | 2714/5000 [00:00<00:00, 3171.29it/s] 62%|██████▏   | 3085/5000 [00:01<00:00, 3317.93it/s] 70%|██████▉   | 3488/5000 [00:01<00:00, 3521.84it/s] 78%|███████▊  | 3880/5000 [00:01<00:00, 3636.03it/s] 85%|████████▌ | 4259/5000 [00:01<00:00, 3624.12it/s] 93%|█████████▎| 4632/5000 [00:01<00:00, 3643.34it/s]100%|██████████| 5000/5000 [00:01<00:00, 3240.77it/s]
+[32m2026-07-01 10:47:13[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m994[0m - [1mRunning generate_until requests[0m
+Model Responding:   0%|          | 0/5000 [00:00<?, ?it/s]Keyword argument `nframes` is not a valid argument for this processor and will be ignored.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Model Responding:   0%|          | 1/5000 [00:01<1:35:27,  1.15s/it]Model Responding:   0%|          | 2/5000 [00:01<46:56,  1.77it/s]  Model Responding:   0%|          | 3/5000 [00:01<31:08,  2.68it/s]Model Responding:   0%|          | 4/5000 [00:01<23:45,  3.50it/s]Model Responding:   0%|          | 5/5000 [00:01<23:18,  3.57it/s]Model Responding:   0%|          | 6/5000 [00:02<21:22,  3.89it/s]Model Responding:   0%|          | 7/5000 [00:02<18:36,  4.47it/s]Model Responding:   0%|          | 8/5000 [00:02<16:37,  5.01it/s]Model Responding:   0%|          | 9/5000 [00:02<15:47,  5.27it/s]Model Responding:   0%|          | 10/5000 [00:02<14:39,  5.67it/s]Model Responding:   0%|          | 11/5000 [00:02<13:54,  5.98it/s]Model Responding:   0%|          | 12/5000 [00:02<13:29,  6.16it/s]Model Responding:   0%|          | 13/5000 [00:03<13:03,  6.36it/s]Model Responding:   0%|          | 14/5000 [00:03<12:52,  6.45it/s]Model Responding:   0%|          | 15/5000 [00:03<12:42,  6.54it/s]Model Responding:   0%|          | 16/5000 [00:03<12:27,  6.66it/s]Model Responding:   0%|          | 17/5000 [00:03<12:23,  6.71it/s]Model Responding:   0%|          | 18/5000 [00:03<12:17,  6.76it/s]Model Responding:   0%|          | 19/5000 [00:04<12:14,  6.79it/s]Model Responding:   0%|          | 20/5000 [00:04<12:15,  6.77it/s]Model Responding:   0%|          | 21/5000 [00:04<12:08,  6.83it/s]Model Responding:   0%|          | 22/5000 [00:04<12:03,  6.88it/s]Model Responding:   0%|          | 23/5000 [00:04<12:07,  6.84it/s]Model Responding:   0%|          | 24/5000 [00:04<12:15,  6.76it/s]Model Responding:   0%|          | 25/5000 [00:04<12:13,  6.79it/s]Model Responding:   1%|          | 26/5000 [00:05<12:13,  6.78it/s]Model Responding:   1%|          | 27/5000 [00:05<12:10,  6.80it/s]Model Responding:   1%|          | 28/5000 [00:05<12:17,  6.75it/s]Model Responding:   1%|          | 29/5000 [00:05<12:20,  6.71it/s]Model Responding:   1%|          | 30/5000 [00:05<12:15,  6.76it/s]Model Responding:   1%|          | 31/5000 [00:05<12:10,  6.80it/s]Model Responding:   1%|          | 32/5000 [00:05<12:18,  6.73it/s]Model Responding:   1%|          | 33/5000 [00:06<12:21,  6.70it/s]Model Responding:   1%|          | 34/5000 [00:06<12:13,  6.77it/s]Model Responding:   1%|          | 35/5000 [00:06<12:17,  6.73it/s]Model Responding:   1%|          | 36/5000 [00:06<12:15,  6.75it/s]Model Responding:   1%|          | 37/5000 [00:06<12:10,  6.79it/s]Model Responding:   1%|          | 38/5000 [00:06<12:09,  6.80it/s]Model Responding:   1%|          | 39/5000 [00:06<12:13,  6.76it/s]Model Responding:   1%|          | 40/5000 [00:07<12:12,  6.77it/s]Model Responding:   1%|          | 41/5000 [00:07<12:08,  6.81it/s]Model Responding:   1%|          | 42/5000 [00:07<12:11,  6.77it/s]Model Responding:   1%|          | 43/5000 [00:07<12:10,  6.78it/s]Model Responding:   1%|          | 44/5000 [00:07<12:16,  6.73it/s]Model Responding:   1%|          | 45/5000 [00:07<12:24,  6.65it/s]Model Responding:   1%|          | 46/5000 [00:08<12:13,  6.75it/s]Model Responding:   1%|          | 47/5000 [00:08<12:17,  6.71it/s]Model Responding:   1%|          | 48/5000 [00:08<12:17,  6.72it/s]Model Responding:   1%|          | 49/5000 [00:08<12:13,  6.75it/s]Model Responding:   1%|          | 50/5000 [00:08<19:39,  4.20it/s]Model Responding:   1%|          | 51/5000 [00:09<20:14,  4.07it/s]Model Responding:   1%|          | 52/5000 [00:09<19:18,  4.27it/s]Model Responding:   1%|          | 53/5000 [00:09<17:07,  4.81it/s]Model Responding:   1%|          | 54/5000 [00:09<21:33,  3.82it/s]Model Responding:   1%|          | 55/5000 [00:10<18:39,  4.42it/s]

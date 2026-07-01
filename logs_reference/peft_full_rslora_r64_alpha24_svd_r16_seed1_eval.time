@@ -1,0 +1,23 @@
+	Command being timed: "env CUDA_VISIBLE_DEVICES=1 NCCL_P2P_DISABLE=1 NCCL_IB_DISABLE=1 MODEL_PATH=./outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed1/merged TASK=textvqa_val_ocr_qaware16 OUTPUT_PATH=./results/textvqa_lora_compression/peft_full_rslora_r64_alpha24_svd_r16_seed1 MAX_PIXELS=200704 MIN_PIXELS=100352 HF_DATASETS_CACHE=/home/luoy/data1/cache/huggingface/datasets_eval_val bash eval_qwen.sh"
+	User time (seconds): 4709.88
+	System time (seconds): 29.14
+	Percent of CPU this job got: 369%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 21:21.81
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7666420
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3279287
+	Voluntary context switches: 340213
+	Involuntary context switches: 388990
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 3216
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

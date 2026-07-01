@@ -1,0 +1,15 @@
+{
+  "compressed_pairs": 196,
+  "energy_kept_ratio": 0.7825341873419268,
+  "input_adapter": "outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_seed3/final",
+  "method": "svd_low_rank_product",
+  "new_alpha": 16,
+  "new_rank": 16,
+  "new_scaling": 4.0,
+  "new_use_rslora": true,
+  "old_alpha": 24.0,
+  "old_rank": 64,
+  "old_scaling": 3.0,
+  "old_use_rslora": true,
+  "output_adapter": "outputs/textvqa_qwen3vl_lora_peft_full_rslora_r64_alpha24_svd_r16_seed3/final"
+}

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.cache/
+.pytest_cache/
+data/
+datasets/
+outputs/
+cache/
+*.zip

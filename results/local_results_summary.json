@@ -1,0 +1,43 @@
+{
+  "base_model": "Qwen/Qwen3-VL-2B-Instruct",
+  "task": "TextVQA",
+  "eval_task": "textvqa_val_ocr_qaware16",
+  "submitted_adapter": "weights/final_r64_svd_r16_seed3",
+  "submitted_adapter_exact_match": 0.74414,
+  "main_method": {
+    "train": "full-LM rsLoRA teacher, r=64, alpha=24, 1024 steps",
+    "compression": "post-training SVD to r=16, alpha=16",
+    "ocr": "question-aware top-16 OCR tokens"
+  },
+  "multi_seed": {
+    "baseline_lora_r16_no_ocr": {
+      "seed1": 0.71340,
+      "seed2": 0.71426,
+      "seed3": 0.71000,
+      "mean": 0.71255
+    },
+    "r64_teacher": {
+      "seed1": 0.74074,
+      "seed2": 0.73990,
+      "seed3": 0.74570,
+      "mean": 0.74211
+    },
+    "r64_svd_r16": {
+      "seed1": 0.73970,
+      "seed2": 0.74114,
+      "seed3": 0.74414,
+      "mean": 0.74166
+    }
+  },
+  "local_cost": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "teacher_train_wall_time_seed1": "58:37.90",
+    "teacher_train_wall_time_seed2": "58:47.74",
+    "teacher_train_wall_time_seed3": "58:00.76",
+    "svd_compression_wall_time_seed3": "0:03.22",
+    "merge_wall_time_seed3": "0:12.67",
+    "eval_wall_time_seed1": "21:21.81",
+    "eval_wall_time_seed2": "21:26.89",
+    "eval_wall_time_seed3": "manual rerun, approximately 21 minutes"
+  }
+}

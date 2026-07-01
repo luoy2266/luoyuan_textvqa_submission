@@ -1,0 +1,23 @@
+	Command being timed: "env CONFIG=configs/experiments/peft_full_rslora_r64_alpha24.yaml SEED=3 CUDA_VISIBLE_DEVICES=4,5 MAIN_PROCESS_PORT=30511 bash run_train.sh"
+	User time (seconds): 7316.39
+	System time (seconds): 115.40
+	Percent of CPU this job got: 213%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 58:00.76
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 9175140
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3465
+	Minor (reclaiming a frame) page faults: 31681925
+	Voluntary context switches: 2401878
+	Involuntary context switches: 704822
+	Swaps: 0
+	File system inputs: 726600
+	File system outputs: 610888
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
